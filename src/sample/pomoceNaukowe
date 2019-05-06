@@ -1,0 +1,24 @@
+https://natureofcode.com/book/chapter-4-particle-systems/
+https://www.youtube.com/watch?v=vLcJRm6Y72U
+https://relativity.net.au/gaming/java/ParticleSystem.html
+http://wecode4fun.blogspot.com/2015/07/particles.html
+com.sun.glass.ui.Robot robot =	com.sun.glass.ui.Application.GetApplication().createRobot(); fajna biblioteka szkoda ze nie dziala
+                scene.setOnMousePressed(event -> {
+                com.sun.glass.ui.Robot robot =
+                        com.sun.glass.ui.Application.GetApplication().createRobot();
+                listOfEmitters.add(new FireEmitter());
+                for (Emitter item : listOfEmitters) {
+                    particles.addAll(item.emit(robot.getMouseX(),robot.getMouseY()));
+                    // update particles i dodawanie ich do canvasa
+                    for(Iterator<Particle> particleIterator= particles.iterator(); particleIterator.hasNext();){
+                        Particle particle = particleIterator.next();
+                        particle.update();
+
+                        if(!particle.isAlive()){
+                            particleIterator.remove();
+                            continue;
+                        }
+                        particle.render(graphicsContext);
+                    }
+                }
+            });
